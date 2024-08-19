@@ -1,0 +1,97 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 75vh;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.App-header {
+  position:relative;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  overflow: hidden;
+}
+
+.Eye-container {
+  position: absolute;
+  z-index: 3;
+}
+
+.Eye {
+  position: relative;
+  height: 75vmin;
+}
+
+@keyframes spotlight {
+  from {r: 5%; }
+  to {r: 400%; }
+}
+
+.Spotlight {
+  position: absolute;
+  /*height: 15vh;*/
+  z-index: 0;
+  /*overflow:hidden;*/
+  /*animation-name: spotlight;*/
+  /*animation-fill-mode: forwards;*/
+  /*animation-duration: 1.5s;*/
+  /*will-change: transform;*/
+}
+
+.circle {
+  animation-name: spotlight;
+  animation-fill-mode: forwards;
+  animation-duration: 1.5s;
+  will-change: transform;
+  r: 5%;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.About-button {
+  position: absolute;
+  top: 9%;
+  left: 53%;
+  padding-left: 5vw;
+  padding-right: 5vw;
+  z-index: 3;
+  background-color: rgba(0, 0, 0, 0.15);
+  border: none;
+}
+
+.Things-button {
+  position: absolute;
+  top: 55%;
+  left: 15%;
+  padding-left: 5vw;
+  padding-right: 5vw;
+  z-index: 3;
+  background-color: rgba(0, 0, 0, 0.15);
+  border: none;
+}
+
+.Projects-button {
+  position: absolute;
+  top: 80%;
+  left: 75%;
+  padding-left: 5vw;
+  padding-right: 5vw;
+  z-index: 3;
+  background-color: rgba(0, 0, 0, 0.15);
+  border: none;
+}
+
+
+.Button-text {
+  color: black;
+}
