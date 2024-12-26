@@ -1,0 +1,24 @@
+.images {
+    object-fit: cover;
+    width: 100%;
+    aspect-ratio : 1 / 1;
+}
+
+.thingPage {
+    padding-top: 1vh;
+    padding-left: 3vw;
+    min-height: 100vh;
+}
+
+.thingHeader {
+    display: flex;
+    height: auto;
+}
+
+.thingFooter {
+    text-align: center;
+}
+
+.revert {
+    outline-width: 0;
+}

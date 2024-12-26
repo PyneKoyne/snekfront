@@ -3,7 +3,7 @@
 }
 
 .App-logo {
-  height: 75vh;
+  height: 75vmin;
   pointer-events: none;
   z-index: 2;
 }
@@ -23,6 +23,7 @@
 .Eye-container {
   position: absolute;
   z-index: 3;
+  height: 75vmin;
 }
 
 .Eye {
@@ -33,6 +34,23 @@
 @keyframes spotlight {
   from {r: 5%; }
   to {r: 400%; }
+}
+
+.bigTitle {
+  font-family: "League Spartan", sans-serif;
+  font-weight: 700;
+  font-size: 15vw;
+  text-decoration: underline;
+  text-decoration-color: red;
+  text-decoration-thickness: 2vh;
+  line-height: 33vh;
+  padding-bottom: 3vh;
+}
+
+.medTitle {
+  font-family: "League Spartan", sans-serif;
+  font-weight: 300;
+  font-size: 6.5vw;
 }
 
 .Spotlight {
@@ -64,6 +82,7 @@
   left: 53%;
   padding-left: 5vw;
   padding-right: 5vw;
+  border-radius: 1vmin;
   z-index: 3;
   background-color: rgba(0, 0, 0, 0.15);
   border: none;
@@ -75,6 +94,7 @@
   left: 15%;
   padding-left: 5vw;
   padding-right: 5vw;
+  border-radius: 1vmin;
   z-index: 3;
   background-color: rgba(0, 0, 0, 0.15);
   border: none;
@@ -86,6 +106,7 @@
   left: 75%;
   padding-left: 5vw;
   padding-right: 5vw;
+  border-radius: 1vmin;
   z-index: 3;
   background-color: rgba(0, 0, 0, 0.15);
   border: none;
@@ -94,4 +115,24 @@
 
 .Button-text {
   color: black;
+  font-family: "League Spartan", sans-serif;
+}
+
+.Hint-text {
+  position:absolute;
+  top: 90%;
+  color: lightgray;
+  animation: fadeInAnimation ease 2s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeInAnimation {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }

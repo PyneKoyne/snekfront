@@ -1,0 +1,11 @@
+.aboutPage {
+    padding-top: 1vh;
+    padding-left: 3vw;
+    min-height: 100vh;
+}
+
+.aboutRevert {
+    width:100%;
+    height:100%;
+    background-color: red;
+}
