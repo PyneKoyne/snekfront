@@ -1,12 +1,13 @@
 import logo from './logo.svg';
 import eye from './eye.svg';
 import './App.css';
-import {useEffect, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import {useNavigate} from 'react-router-dom';
 import {Typography} from "antd";
 
 
 const App = () => {
+    const animationRef = useRef(false);
     const [animation, setAnimation] = useState(false);
     const [hint, setHint] = useState(false);
     const [eyePosX, setEyePosX] = useState(13.77259843);
@@ -29,13 +30,20 @@ const App = () => {
         });
 
         setTimeout(() => {
-            if (animation === false) setHint(true);
-        }, 1500);
+            if (animationRef.current === false) {
+                setHint(true);
+            }
+        }, 1200);
     }, []);
+
+    useEffect(() => {
+        animationRef.current = animation;
+    }, [animation])
 
     function triggerAnimation() {
         if (animation === false) {
             setAnimation(true);
+            console.log(animation);
             setHint(false);
             const expandSpotlight = setInterval(() => {
                 setEyePosX((prev) => (prev - 13.77259843) / 1.2 + 13.77259843)

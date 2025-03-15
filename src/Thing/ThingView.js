@@ -9,7 +9,7 @@ import Meta from "antd/es/card/Meta";
 
 const {Footer, Header, Content} = Layout;
 
-const blogUrl = "http://localhost:4000/thing"
+const blogUrl = "https://localhost:4000/thing"
 
 const ThingView = () => {
     const [items, setItems] = useState([]);
@@ -67,6 +67,7 @@ const ThingView = () => {
         const pageData = fetch(blogUrl + "/grabAll");
         pageData.then((data => {
             data.json().then((items) => {
+                console.log(items)
                 setItems(JSON.parse(items));
             });
         }))
