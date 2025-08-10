@@ -12,8 +12,8 @@ const App = () => {
     const [hint, setHint] = useState(false);
     const [eyePosX, setEyePosX] = useState(13.77259843);
     const [eyePosY, setEyePosY] = useState(8.75);
-    const [spotlightX, setSpotlightX] = useState(window.innerWidth/2);
-    const [spotlightY, setSpotlightY] = useState(window.innerHeight/2);
+    const [spotlightX, setSpotlightX] = useState(window.innerWidth/4);
+    const [spotlightY, setSpotlightY] = useState(window.innerHeight/4);
     const [spotlightHeight, setSpotlightHeight] = useState(0);
     const [bgColor, setBgColor] = useState("#000001");
     const navigate = useNavigate();
@@ -107,11 +107,15 @@ const App = () => {
                 {/*    top: `${spotlightY}px`,*/}
                 {/*    animationPlayState: `${animation ? "running" : "paused"}`*/}
                 {/*}} src={spotlight} className="Spotlight" alt="spotlight"/>*/}
-                {bgColor === "#000000" &&
+                {(bgColor === "#000000" || bgColor === "#000001") &&
                     <svg className="Spotlight" viewBox={"0 0 " + window.innerWidth + " " + window.innerHeight}
                          xmlns="http://www.w3.org/2000/svg">
                         <circle cx={spotlightX.toString(10)} cy={spotlightY.toString(10)} className="circle"
                                 style={{animationPlayState: `${animation ? "running" : "paused"}`}} fill="red"/>
+                        {!animation && <circle cx={spotlightX.toString(10)} cy={spotlightY.toString(10)} className="hider"
+                                fill="ff0000"></circle>}
+                        {!animation && <circle cx={spotlightX.toString(10)} cy={spotlightY.toString(10)} className="glow">
+                        </circle>}
                     </svg>
 
                 }

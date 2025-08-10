@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Route, Routes, useLocation, useNavigate} from "react-router-dom";
+    import {Route, Routes, useLocation, useNavigate} from "react-router-dom";
 import {Button, Card, Col, Flex, Layout, Typography} from 'antd';
 import {RollbackOutlined} from '@ant-design/icons';
 import './Thing.css';
@@ -13,6 +13,8 @@ const blogUrl = "https://localhost:4000/thing"
 
 const ThingView = () => {
     const [items, setItems] = useState([]);
+    const [data, setData] = useState("");
+    const [blog, setBlog] = useState("");
     const navigate = useNavigate();
     const location = useLocation();
     const [path, setPath] = useState(["/"]);
@@ -33,11 +35,19 @@ const ThingView = () => {
         setPath(tempPath);
     }, [location.pathname]);
 
+    useEffect(() => {
+        fetchPageData(blog);
+    }, [blog])
+
     const generatePage = (fileName) => {
+        if (blog !== fileName) {
+            setBlog(fileName);
+        }
         const item = () => {
             try {
-                return (things[fileName]())
+                return (things[fileName](data))
             } catch (e) {
+                console.log(e);
                 return (<div>
                         <Typography>Nothing Found Here</Typography>
                     </div>)
@@ -69,6 +79,22 @@ const ThingView = () => {
             data.json().then((items) => {
                 console.log(items)
                 setItems(JSON.parse(items));
+            });
+        }))
+    }
+
+    const fetchPageData = (loc) => {
+        const pageData = fetch(blogUrl + "/grab/" + loc);
+        pageData.then((data => {
+            data.json().then((items) => {
+                console.log("fetchPageData~JSON:" + JSON.stringify((items)));
+                if (items != null) {
+                    const rawData = JSON.parse(items);
+                    if (rawData.length !== 0) {
+                        console.log(rawData[0]["content"])
+                        setData(rawData[0]["content"]);
+                    }
+                }
             });
         }))
     }
