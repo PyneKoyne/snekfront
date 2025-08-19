@@ -9,7 +9,7 @@ import Meta from "antd/es/card/Meta";
 
 const {Footer, Header, Content} = Layout;
 
-const blogUrl = "https://localhost:4000/thing"
+const blogUrl = "https://pynekoyne.com/thing"
 
 const ThingView = () => {
     const [items, setItems] = useState([]);
