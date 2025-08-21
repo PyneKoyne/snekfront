@@ -18,11 +18,11 @@ const View = (data) => {
                 console.log("divideData~ splitSection: " + JSON.stringify(splitSection));
                 if (splitSection[0].substring(splitSection[0].length - 3) === "mp4") {
                     processedSections.push(<video className="ThingImages"
-                                                src={"https://pynekoyne.com:4000/files/blog/files/CameraAsEyeMkI/" + splitSection[0].replaceAll(" ", "_")}/>)
+                                                src={"https://pynekoyne.com/files/blog/files/CameraAsEyeMkI/" + splitSection[0].replaceAll(" ", "_")}/>)
                 }
                 else{
                     processedSections.push(<img className="ThingImages" alt={splitSection[0]}
-                                                src={"https://pynekoyne.com:4000/files/blog/files/CameraAsEyeMkI/" + splitSection[0].replaceAll(" ", "_")}/>)
+                                                src={"https://pynekoyne.com/files/blog/files/CameraAsEyeMkI/" + splitSection[0].replaceAll(" ", "_")}/>)
                 }
                 processedSections.push(<Markdown>{splitSection[1]}</Markdown>);
             })

@@ -77,6 +77,7 @@ const ThingView = () => {
         const pageData = fetch(blogUrl + "/grabAll");
         pageData.then((data => {
             data.json().then((items) => {
+                console.log("Running `fetchData` in ThingView.js:");
                 console.log(items)
                 setItems(JSON.parse(items));
             });

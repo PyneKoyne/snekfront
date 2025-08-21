@@ -17,6 +17,7 @@ const App = () => {
     const [spotlightHeight, setSpotlightHeight] = useState(0);
     const [bgColor, setBgColor] = useState("#000001");
     const navigate = useNavigate();
+    const url = "https://pynekoyne.com"
 
     // Code which runs on the initial render
     useEffect(() => {
