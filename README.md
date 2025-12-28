@@ -1,4 +1,4 @@
-# Snek
+# SnekFront
 This project contains the front-end of the Sneksite Website. This website is built using React and Ant Design.
 
 ---
@@ -18,7 +18,7 @@ This project uses the following packages:
 ### Installation
 1. Clone the repo
 ```
-git clone https://github.com/PyneKoyne/sneksite.git
+git clone https://github.com/PyneKoyne/snekfront.git
 ```  
 
 2. Navigate into snek from sneksite
