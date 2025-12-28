@@ -16,7 +16,8 @@
     "react-scripts": "5.0.1",
     "three": "^0.167.1",
     "three.js": "^0.77.1",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "react-markdown": "^10.1.0"
   },
   "scripts": {
     "start": "set PORT=3001 && react-scripts start",

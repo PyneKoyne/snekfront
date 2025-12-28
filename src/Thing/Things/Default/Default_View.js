@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import {Typography} from 'antd';
-import './Styles.css';
+import './default.css';
 import Markdown from 'react-markdown'
 
-const View = (data) => {
+const Default_View = (data) => {
 
     function divideData(pageData){
         const dividedPage = pageData.split("![[");
@@ -17,11 +17,11 @@ const View = (data) => {
                 const splitSection = section.split("]]");
                 console.log("divideData~ splitSection: " + JSON.stringify(splitSection));
                 if (splitSection[0].substring(splitSection[0].length - 3) === "mp4") {
-                    processedSections.push(<video className="ThingImages"
-                                                src={"https://pynekoyne.com/files/blog/files/CameraAsEyeMkI/" + splitSection[0].replaceAll(" ", "_")}/>)
+                    processedSections.push(<video className="DefaultImages"
+                                                  src={"https://pynekoyne.com/files/blog/files/CameraAsEyeMkI/" + splitSection[0].replaceAll(" ", "_")}/>)
                 }
                 else{
-                    processedSections.push(<img className="ThingImages" alt={splitSection[0]}
+                    processedSections.push(<img className="DefaultImages" alt={splitSection[0]}
                                                 src={"https://pynekoyne.com/files/blog/files/CameraAsEyeMkI/" + splitSection[0].replaceAll(" ", "_")}/>)
                 }
                 processedSections.push(<Markdown>{splitSection[1]}</Markdown>);
@@ -40,4 +40,4 @@ const View = (data) => {
     )
 }
 
-export default View;
+export default Default_View;

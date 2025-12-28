@@ -1,1 +1,1 @@
-export {default as VisionDiff} from './Things/VisionDiff/View'
+export {default as VisionDiff} from './Things/VisionDiff/VD_View'
