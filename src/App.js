@@ -127,17 +127,17 @@ const App = () => {
                 {hint && <Typography className="Hint-text">Double Click or Press Spacebar to Illuminate</Typography>}
             </header>
             <button className="About-button" onClick={onClickAbout}>
-                <h1 className="Button-text">
+                <h1 className="Button-text" style={{animationPlayState: `${animation ? "running" : "paused"}`}} >
                     About
                 </h1>
             </button>
             <button className="Things-button" onClick={onClickThings}>
-                <h1 className="Button-text">
+                <h1 className="Button-text" style={{animationPlayState: `${animation ? "running" : "paused"}`}}>
                     Things
                 </h1>
             </button>
             <button className="Projects-button" onClick={onClickProjects}>
-                <h1 className="Button-text">
+                <h1 className="Button-text" style={{animationPlayState: `${animation ? "running" : "paused"}`}}>
                     Projects
                 </h1>
             </button>

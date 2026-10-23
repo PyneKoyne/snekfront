@@ -113,7 +113,6 @@
   text-decoration-color: red;
   text-decoration-thickness: 2vh;
   line-height: 33vh;
-  padding-bottom: 3vh;
 }
 
 .medTitle {
@@ -199,7 +198,7 @@
 
 
 .Button-text {
-  color: black;
+  animation: button-colour 0.4s 1 forwards;
   font-family: "League Spartan", sans-serif;
 }
 
@@ -210,6 +209,16 @@
   animation: fadeInAnimation ease 2s;
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
+}
+
+@keyframes button-colour {
+  0% {
+    color:black;
+  }
+
+  100% {
+    color:white;
+  }
 }
 
 @keyframes fadeInAnimation {

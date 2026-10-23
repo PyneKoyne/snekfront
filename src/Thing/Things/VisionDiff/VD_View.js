@@ -3,7 +3,7 @@ import {Typography} from 'antd';
 import './vd.css';
 import Markdown from 'react-markdown'
 
-const VD_View = (data) => {
+export const VisionDiff = (data) => {
 
     function divideData(pageData){
         const dividedPage = pageData.split("![[");
@@ -16,9 +16,11 @@ const VD_View = (data) => {
             dividedPage.map((section) => {
                 const splitSection = section.split("]]");
                 console.log("divideData~ splitSection: " + JSON.stringify(splitSection));
-                if (splitSection[0].substring(splitSection[0].length - 3) === "mp4") {
-                    processedSections.push(<video className="ThingImages"
-                                                  src={"https://pynekoyne.com/files/blog/files/CameraAsEyeMkI/" + splitSection[0].replaceAll(" ", "_")}/>)
+                if (splitSection[0].substring(splitSection[0].length - 3) === "mp4" || splitSection[0].substring(splitSection[0].length - 4) === "webm") {
+                    processedSections.push(
+                        <video className="ThingImages" controls>
+                            <source src={"https://pynekoyne.com/files/blog/files/CameraAsEyeMkI/" + splitSection[0].replaceAll(" ", "_")} type="video/webm" />
+                        </video>)
                 }
                 else{
                     processedSections.push(<img className="ThingImages" alt={splitSection[0]}
@@ -39,5 +41,3 @@ const VD_View = (data) => {
         </div>
     )
 }
-
-export default VD_View;

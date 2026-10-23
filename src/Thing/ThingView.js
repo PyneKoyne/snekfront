@@ -31,7 +31,6 @@ const ThingView = () => {
             }
         });
         tempPath.pop();
-        console.log(tempPath);
         setPath(tempPath);
     }, [location.pathname]);
 
@@ -40,17 +39,27 @@ const ThingView = () => {
     }, [blog])
 
     const generatePage = (fileName) => {
-        if (blog !== fileName) {
-            setBlog(fileName);
+        let cur = location.pathname.split("/")
+        if (cur[cur.length - 1] === ""){
+            cur.pop()
         }
+        if (cur.pop() === fileName && blog !== fileName) {
+            setBlog(fileName)
+        }
+        console.log(location.pathname)
         const item = () => {
             try {
                 return (things[fileName](data))
             } catch (e) {
                 console.log(e);
-                return (<div>
-                        <Typography>Nothing Found Here</Typography>
+                try {
+                    return (things["Default_View"](data, fileName.replace(" ", "_")))
+                }
+                catch (err) {
+                    return (<div>
+                        Nothing Found here
                     </div>)
+                }
             }
         };
         return (<Route path={"/" + fileName} element={item()}/>)
@@ -67,7 +76,10 @@ const ThingView = () => {
                 title={metaData.fileName}
                 cover={metaData.thumbnail ? <img className="images" alt={metaData.fileName} src={metaData.thumbnail}/> :
                     <img className="images" alt={metaData.fileName} src={logo}/>}
-                onClick={() => navigateThing(fileName)}
+                onClick={() => {
+                    navigateThing(fileName);
+                    setBlog(fileName);
+                }}
             >
                 <Meta description={metaData.description}/>
             </Card>)
@@ -90,7 +102,10 @@ const ThingView = () => {
             data.json().then((items) => {
                 console.log("fetchPageData~JSON:" + JSON.stringify((items)));
                 if (items != null) {
-                    const rawData = JSON.parse(items);
+                    let rawData = items;
+                    if (typeof rawData === "string") {
+                        rawData = JSON.parse(items);
+                    }
                     if (rawData.length !== 0) {
                         console.log(rawData[0]["content"])
                         setData(rawData[0]["content"]);
@@ -131,7 +146,7 @@ const ThingView = () => {
     return (<div>
         <Layout className="thingPage">
             <Typography className="bigTitle">Things</Typography>
-            <Content>
+            <Content className="thingContent">
                 <Routes>
                     <Route path="/" element={mainPage()}/>
                     {items.map(({fileName}) => (generatePage(fileName)))}

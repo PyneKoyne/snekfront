@@ -1,11 +1,200 @@
-.aboutPage {
-    padding-top: 1vh;
-    padding-left: 3vw;
-    min-height: 100vh;
+.aboutScene {
+    position: relative;
+    background: #000000;
 }
 
-.aboutRevert {
-    width:100%;
-    height:100%;
-    background-color: red;
+.aboutScene-sticky {
+    position: fixed;
+    inset: 0;
+    height: 100vh;
+    height: 100dvh;
+    overflow: hidden;
+    background: #ff0000;
+}
+
+.aboutScene-canvas {
+    position: absolute;
+    inset: 0;
+}
+
+.aboutScene-canvas canvas {
+    display: block;
+}
+
+.aboutScene-end {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 2.4vh;
+    opacity: 0;
+    transform: translateY(4vh);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+    pointer-events: none;
+}
+
+.aboutScene-end.is-active {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.aboutScene-projects {
+    max-width: 90vw;
+}
+
+.aboutScene-footer {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 1.6vmin calc(4vw + env(safe-area-inset-right)) calc(1.6vmin + env(safe-area-inset-bottom)) calc(4vw + env(safe-area-inset-left));
+}
+
+.aboutScene-links {
+    max-width: 90vw;
+}
+
+.aboutScene-project {
+    width: min(38vw, 320px);
+    opacity: 0;
+    transform: translateY(3vh);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.aboutScene-project.ant-card,
+.aboutScene-project.ant-card.ant-card-hoverable:hover {
+    border-color: transparent;
+    box-shadow:
+            0 0 0 1px rgba(0, 0, 0, 0.12),
+            0 6px 18px rgba(0, 0, 0, 0.2);
+}
+
+.aboutScene-end.is-active .aboutScene-project {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.aboutScene-projectImage {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+
+.aboutScene-link {
+    opacity: 0;
+    transform: translateY(3vh);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.aboutScene-end.is-active .aboutScene-link {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.aboutScene-end .ant-typography,
+.aboutScene-end .ant-card-head-title,
+.aboutScene-end .ant-card-meta-description {
+    font-family: "League Spartan", sans-serif;
+}
+
+.aboutScene-progress {
+    position: absolute;
+    top: calc(14px + env(safe-area-inset-top));
+    bottom: calc(14px + env(safe-area-inset-bottom));
+    right: calc(14px + env(safe-area-inset-right));
+    width: 2px;
+    background: rgba(255, 255, 255, 0.22);
+    border-radius: 1px;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.aboutScene-motion {
+    position: absolute;
+    left: 50%;
+    bottom: calc(4vh + env(safe-area-inset-bottom));
+    transform: translateX(-50%);
+    z-index: 3;
+}
+
+.aboutScene-progressThumb {
+    width: 100%;
+    height: 44px;
+    background: #ffffff;
+    border-radius: 1px;
+    will-change: transform;
+}
+
+.aboutScene-loader {
+    position: absolute;
+    inset: 0;
+    z-index: 4;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-start;
+    padding: calc(1vh + env(safe-area-inset-top)) calc(3vw + env(safe-area-inset-right)) 0 0;
+    background: #ff0000;
+    transition: opacity 0.6s ease;
+}
+
+.aboutScene-loader.is-hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.aboutScene-loaderLogo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 75vmin;
+    transform: translate(-50%, -50%);
+    animation: aboutScene-pulse 1.6s ease-in-out infinite;
+}
+
+@keyframes aboutScene-pulse {
+    0%,
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    50% {
+        transform: translate(-50%, -50%) scale(1.06);
+    }
+}
+
+.aboutScene-loaderTitle {
+    color: #ffffff;
+    text-decoration-color: #ffffff;
+    text-align: right;
+}
+
+.aboutScene-loaderText {
+    color: #ffffff;
+    font-family: "League Spartan", sans-serif;
+    font-size: 2vmin;
+    font-weight: 600;
+    text-align: right;
+    margin: -5vh 0 0;
+}
+
+@media (pointer: coarse) {
+    .aboutScene-link {
+        min-height: 44px;
+    }
+}
+
+@media (max-width: 768px) {
+    .aboutScene-project {
+        width: min(86vw, 380px);
+    }
+
+    .aboutScene-loaderText {
+        font-size: 3.6vmin;
+    }
 }
